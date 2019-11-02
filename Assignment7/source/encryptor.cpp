@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
       std::cerr << e.what() << std::endl;
       exit(1);
    }
-	cout<<"Encrypted Payload : "<< cipher<<endl;
+	cout<<"Encrypted Payload : "<< cipher<<"\n";
  Print("key", std::string((const char*)key.begin(), key.size()));
    Print("iv", std::string((const char*)iv.begin(), iv.size()));
 return 0;

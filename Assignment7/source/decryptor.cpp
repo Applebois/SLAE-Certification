@@ -11,18 +11,6 @@
 using namespace std;
 using namespace CryptoPP;
 
-void Print(const std::string& label, const std::string& val)
-{
-   std::string encoded;
-   StringSource(val, true,
-      new HexEncoder(
-         new StringSink(encoded)
-      ) // HexEncoder
-   ); // StringSource
-
-   std::cout << label << ": " << encoded << std::endl;
-}
-
 string decode(string data)
 {
    std::string decoded;
