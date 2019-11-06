@@ -1,5 +1,7 @@
-ORIGINAL CODE : 33 BYTES
+Original Shellcode Bytes = 33
 
-AFTER MODIFIED : 43 BYTES
+Modified Shellcode Bytes = 43
 
-130%
+Increase 30%
+
+TOTAL 130%
