@@ -1,0 +1,3 @@
+break *&shellcode
+disable $bpnum
+
