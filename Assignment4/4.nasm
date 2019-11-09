@@ -7,12 +7,13 @@ jmp short call_shellcode
 
 decoder:
 	pop esi
+	lea edi , [esi]
 	xor ebx,ebx
 	xor ecx,ecx
 	mov cl , length
 
 decode:
-	mov bl , byte[esi]
+	mov bl , byte[edi]
 
 decrease:
 	dec bl
@@ -20,8 +21,8 @@ decrease:
 decrement:
 	dec bl
 	jz short decrement
-	mov byte [esi] , bl
-	inc esi
+	mov byte [edi] , bl
+	inc edi
 	loop decode
 	jmp short Shellcode
 
